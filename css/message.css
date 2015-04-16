@@ -1,0 +1,357 @@
+/* global (in message.php) css */
+.message-guide{
+    height:100px;
+    width:550px;
+    text-align: center;
+    margin:40px auto 0px auto;
+    padding: 0px 50px;
+    background: #F4F8FA;
+    border-radius: 5px;
+}
+
+.message-guide h3{
+    padding:20px 0px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+.psy-btn{
+    border: none;
+	font-size: inherit;
+	color: inherit;
+	cursor: pointer;
+    width:350px;
+    height:80px;
+	padding: 25px 80px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* start slide */
+/* start buttons */
+
+.start-btn-group{
+    position: relative;
+    top:90px;
+}
+
+.btn-start, .btn-join, .btn-back{
+	border-radius: 50px;
+	border: 3px solid #fff;
+}
+
+.btn-start:before, .btn-join:before{
+	position: absolute;
+	height: 100%;
+	font-size: 125%;
+	line-height: 3.5;
+	color: #fff;
+	left: 130%;
+	top: 5px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-start:hover:before, .btn-join:hover:before {
+	left: 85%;
+}
+
+.message-start{
+    height:400px;
+    width:400px;
+    margin:10px auto 0px auto;
+    overflow: hidden;
+}
+
+/* wait slide */
+.btn-back{
+    position: relative;
+    margin-top: 5px;
+}
+.btn-back:before{
+	position: absolute;
+	height: 100%;
+	font-size: 125%;
+	line-height: 3.5;
+	color: #fff;
+	left: -30%;
+	top: 5px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-back:hover:before{
+    left:15%;
+}
+
+.message-wait{
+    height:500px;
+    width:400px;
+    margin:10px auto 0px auto;
+    overflow: hidden;
+}
+
+/* message join */
+.message-join{
+    height:600px;
+    width:400px;
+    margin:10px auto 0px auto;
+    overflow: hidden;
+}
+
+.message-join-panel, .message-wait-panel{
+    height:400px;   
+    margin-bottom: 5px;
+}
+
+.message-join-panel .panel-body, .message-wait-panel .panel-body{
+    overflow: auto;
+}
+
+.message-wait-panel .panel-body{
+    text-align: center;
+    height:400px;
+    padding:0px 50px;
+}
+.message-wait-panel .panel-body h4, .message-wait-panel .panel-body h5{
+    position:relative;
+    top:80px;
+}
+
+.available-user-list{
+    width:100%;
+    list-style: none;
+    padding: 0px;
+    overflow: auto;
+}
+
+.available-user-list li{
+    text-align: center;
+    height:60px;
+    width:100%;
+}
+
+.available-user-list li a{
+    display: inline-block;
+    height:60px;
+    width:100%;
+    line-height: 60px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 15px;
+}
+
+.available-user-list li a:hover{
+    background: #EFEFEF;
+}
+
+/* message-play style */
+.message-play-guide{
+    height:100px;
+    width:550px;
+    text-align: center;
+    margin:40px auto 0px auto;
+    background: #F4F8FA;
+    border-radius: 5px;
+}
+
+.message-play-guide h3{
+    padding:10px 0px 0px 0px;
+}
+.message-play-guide h4{
+    padding:0px 0px;
+}
+
+.message-play{
+    width:1120px;
+    margin:10px auto 0px auto;
+    overflow: hidden;
+}
+
+#message-play-wrapper .message-play-guide h4{
+    color: #D95B78;   
+}
+
+.message-play .btn-back-from-play, .btn-next-turn{
+    width:150px;
+    left:50%;
+    margin:0px 0px 0px -75px;
+    text-align: center;
+	padding: 25px 30px;
+}
+
+.turn-num-wrapper{
+    border: 3px solid #FFFFFF;
+	border-radius: 50px;
+	font-size: inherit;
+	color: inherit;
+    height:80px;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+    width:150px;
+    left:50%;
+    margin:0px 0px 10px -75px;
+    text-align: center;
+	padding: 25px 30px;
+}
+
+.btn-next-turn{
+    opacity: 0;
+    z-index: -1;
+	border-radius: 50px;
+	border: 3px solid #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-strt-msg{
+    border: none;
+	border-radius: 50px;
+	font-size: inherit;
+	color: inherit;
+    height:80px;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+    top: 120px;
+    width:150px;
+    left:50%;
+    margin:0px 0px 10px -75px;
+    text-align: center;
+	padding: 25px 30px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-back-from-play:before{
+	position: absolute;
+	height: 100%;
+	font-size: 125%;
+	line-height: 3.5;
+	color: #fff;
+	left: -20%;
+	top: 5px;
+    opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-back-from-play:hover:before{
+	left: 15%;
+    opacity: 1;
+}
+
+.grid-panel{
+    width:450px;
+    height:450px;
+    margin:10px 10px;
+    float: left;
+}
+
+.btn-panel{
+    width:150px;
+    height:450px;
+    margin:10px 10px;
+    float: left;
+}
+
+.view-panel{
+    width:140px;
+    height:180px;
+    margin:10px auto;
+}
+.view-panel .panel-body{
+    height:140px;
+    overflow: auto;
+}
+
+.input-panel{
+    width:450px;
+    height:450px;
+    margin:10px 10px;
+    float: left;
+}
+
+.grid-panel .panel-body .grid_list{
+    list-style: none;
+    height:375px;
+    width:417px;
+    padding:0px;
+    margin:0px;
+}
+
+.grid-panel .panel-body .grid_list .grid_row{
+    height:125px;
+    width:417px;
+    padding:0px;
+    margin:0px;
+}
+
+.grid-panel .panel-body .grid_list .grid_row .grid_row_list{
+    list-style: none;
+    height:125px;
+    width:417px;
+    padding:0px;
+    margin:0px;
+}
+
+.grid-panel .panel-body .grid_list .grid_row .grid_row_list .grid_item{
+	display: block;
+    float:left;
+    height:125px;
+    width:139px;
+    padding:0px;
+    margin:0px;
+    text-align: center;
+}
+
+.grid-panel .panel-body .grid_list .grid_row .grid_row_list .grid_item h1{
+    text-align: center;
+    height:125px;
+    line-height: 125px;
+    vertical-align: middle;
+    cursor: pointer;
+    color:#000000;
+    margin:0px;
+    border: 1px solid #D9EDF7;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.grid-panel .panel-body .grid_list .grid_row .grid_row_list .grid_item h1:hover{
+    background:#CFCFCF;
+    color:#FFFFFF;
+}
+
+.input-panel .panel-body{
+    height:408px;
+}
+
+canvas{
+	position: absolute;
+	top: 200px;
+}
+iframe{
+	position: absolute;
+	top:200px;
+}

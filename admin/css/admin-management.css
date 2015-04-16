@@ -1,0 +1,333 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('fonts/icomoon.eot?-4cg1ki');
+  src: url('fonts/icomoon.eot?#iefix-4cg1ki') format('embedded-opentype'), url('fonts/icomoon.woff?-4cg1ki') format('woff'), url('fonts/icomoon.ttf?-4cg1ki') format('truetype'), url('fonts/icomoon.svg?-4cg1ki#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.icon-circle-plus:before {
+  content: "\e040";
+}
+.icon-circle-minus:before {
+  content: "\e041";
+}
+.icon-circle-check:before {
+  content: "\e042";
+}
+.icon-circle-cross:before {
+  content: "\e043";
+}
+.icon-plus:before {
+  content: "\e114";
+}
+.icon-minus:before {
+  content: "\e115";
+}
+.icon-check:before {
+  content: "\e116";
+}
+.icon-cross:before {
+  content: "\e117";
+}
+.icon-ellipsis:before {
+  content: "\e129";
+}
+.icon-chevron-right:before {
+  content: "\f400";
+}
+.icon-chevron-left:before {
+  content: "\f401";
+}
+.icon-info-large-outline:before {
+  content: "\f600";
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.alert {
+  position: absolute;
+  top: 0px;
+  margin: 0px;
+  width: 100%;
+  opacity: 1;
+  transition: all 200ms;
+  -webkit-transition: all 200ms;
+}
+.admin-panel {
+  float: left;
+  width: 25%;
+  height: 100%;
+  overflow: hidden;
+  margin-left: 5.8823529%;
+}
+.admin-panel .admin-add-head {
+  height: 40px;
+  width: 95%;
+  margin: 10px 0px 0px 0px;
+  background-color: #d8edf7;
+}
+.admin-panel .admin-add-head .add-icon {
+  float: left;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  vertical-align: middle;
+  text-align: center;
+  color: #808080;
+}
+.admin-panel .admin-add-head .add-icon:before {
+  font-size: 15px;
+}
+.admin-panel .admin-add-head .add-text {
+  float: left;
+  height: 40px;
+  width: 80%;
+  line-height: 40px;
+  font-size: 15px;
+  vertical-align: middle;
+  color: #808080;
+}
+.admin-panel .admin-add-content {
+  width: 95%;
+  height: 210px;
+  border: 1px solid #d8edf7;
+  background-color: #FFFFFF;
+}
+.admin-panel .admin-add-content input.form-control {
+  height: 35px;
+  width: 95%;
+  margin: 5px 2.5%;
+}
+.admin-panel .admin-add-content .checkbox {
+  padding: 0px 50px;
+}
+.admin-panel .add-btn {
+  position: relative;
+  width: 80px;
+  left: 50%;
+  margin-left: -40px;
+  margin-top: 5px;
+}
+.admin-panel .admin-delete-head {
+  height: 40px;
+  width: 95%;
+  margin: 10px 0px 0px 0px;
+  background-color: #d8edf7;
+  color: #808080;
+}
+.admin-panel .admin-delete-head .delete-icon {
+  float: left;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  vertical-align: middle;
+  text-align: center;
+}
+.admin-panel .admin-delete-head .delete-icon:before {
+  font-size: 15px;
+}
+.admin-panel .admin-delete-head .delete-text {
+  float: left;
+  height: 40px;
+  width: 80%;
+  line-height: 40px;
+  font-size: 15px;
+  vertical-align: middle;
+}
+.admin-panel .admin-delete-head:hover {
+  border: 1px solid #3a8bcc;
+  color: #000000;
+  cursor: pointer;
+}
+.admin-panel .admin-info-head {
+  height: 40px;
+  width: 95%;
+  margin: 10px 0px 0px 0px;
+  background-color: #d8edf7;
+  color: #808080;
+}
+.admin-panel .admin-info-head .info-icon {
+  float: left;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  vertical-align: middle;
+  text-align: center;
+}
+.admin-panel .admin-info-head .info-icon:before {
+  font-size: 15px;
+}
+.admin-panel .admin-info-head .info-text {
+  float: left;
+  height: 40px;
+  width: 80%;
+  line-height: 40px;
+  font-size: 15px;
+  vertical-align: middle;
+}
+.admin-panel .admin-info-content {
+  width: 95%;
+  height: 210px;
+  border: 1px solid #d8edf7;
+  background-color: #FFFFFF;
+  padding: 30px;
+}
+.admin-panel .admin-info-content h4 {
+  font-size: 15px;
+}
+.admin-main {
+  height: 80%;
+  width: 65%;
+  float: left;
+  margin: 10px 0px;
+  background-color: transparent;
+  border-radius: 10px;
+  text-align: center;
+}
+.admin-main table {
+  width: 95%;
+  margin: 0px auto 10px auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.admin-main table tbody {
+  overflow-y: auto;
+  background-color: #FFFFFF;
+}
+.admin-main table tbody tr:hover {
+  cursor: pointer;
+}
+.admin-main table tbody .hoveredEntry {
+  background-color: #d8edf7;
+}
+.admin-main table tbody .selectedEntry {
+  background-color: #aed9ee;
+}
+.admin-main table thead {
+  height: 10%;
+  overflow-x: auto;
+  background-color: #3a8bcc;
+  border-top: 1px #D0D0D0 solid;
+  border-bottom: 1px #D0D0D0 solid;
+}
+.admin-main table thead th,
+.admin-main table thead td {
+  height: 32px;
+  line-height: 32px;
+  vertical-align: middle;
+  text-align: center;
+  color: #FFFFFF;
+}
+.admin-main table thead .head-check {
+  width: 32px;
+}
+.admin-main table thead .head-id {
+  width: 32px;
+}
+.admin-main table thead .head-username {
+  width: 150px;
+}
+.admin-main table thead .head-root {
+  width: 100px;
+}
+.admin-main table thead .head-option {
+  width: 150px;
+}
+.admin-main table td {
+  padding: 8px 8px;
+  height: 32px;
+  line-height: 32px;
+  vertical-align: middle;
+  text-align: center;
+  color: #808080;
+}
+.admin-main table .head-check {
+  width: 32px;
+}
+.admin-main table .head-id {
+  width: 32px;
+}
+.admin-main table .head-root {
+  width: 100px;
+}
+.admin-main table .head-option {
+  width: 150px;
+}
+.admin-main table .head-option .user-delete {
+  border: 1px #000000 solid;
+  width: 100px;
+  margin: 0px auto;
+}
+.admin-main table .head-option .user-delete:hover {
+  border: 1px #3a8bcc solid;
+  cursor: pointer;
+}
+.admin-main table .selectedCheck {
+  background-color: #83c6e6;
+  color: #FFFFFF;
+}
+.admin-main .pagination {
+  width: 95%;
+  padding: 0px 10px;
+  margin: 0px auto;
+  height: 30px;
+}
+.admin-main .pagination div {
+  float: right;
+  height: 25px;
+  line-height: 25px;
+  vertical-align: middle;
+}
+.admin-main .pagination .pager {
+  width: 150px;
+  margin: 0px 5px;
+  height: 30px;
+}
+.admin-main .pagination .pager span,
+.admin-main .pagination .pager h4 {
+  float: left;
+}
+.admin-main .pagination .pager h4 {
+  width: 90px;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0px;
+}
+.admin-main .pagination .pager .pre-page,
+.admin-main .pagination .pager .next-page {
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  font-size: 18px;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  transition: all 250ms;
+  -webkit-transition: all 250ms;
+}
+.admin-main .pagination .pager .pre-page:hover,
+.admin-main .pagination .pager .next-page:hover {
+  cursor: pointer;
+  background-color: #d8edf7;
+}
+.admin-main .pagination .pager .pre_page_disabled:hover,
+.admin-main .pagination .pager .next_page_disabled:hover {
+  cursor: default;
+  background-color: #f8f8f8;
+}
+.admin-main .pagination .page-detail {
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  font-style: italic;
+  font-size: 12px;
+}

@@ -1,0 +1,46 @@
+
+
+/* login panel */
+.login-panel{
+    position:relative;
+    top:100px;
+    width:400px;
+    height:400px;
+    margin:0px auto;
+}
+
+.login-label{
+    margin-left:60px;
+}
+
+.login-input {
+    width:250px;
+    margin:0px auto;
+}
+
+.login-submit{
+    position:absolute;
+    width:100px;
+    left:50%;
+    margin-left:-50px;
+    
+}
+
+.signup-link, .admin-signin{
+    position:absolute;
+    width:210px;
+    left:50%;
+    margin-left:-105px;
+    top:210px;
+    text-align: center;
+}
+
+.admin-signin{
+    top: 230px;
+}
+
+.login-form-wrapper{
+    position:relative;
+    margin:0px auto;
+    margin-top:30px;
+}

@@ -1,0 +1,54 @@
+/* signup panel */
+.signup-panel{
+    position:relative;
+    top:75px;
+    width:400px;
+    height:450px;
+    margin:0px auto;
+    overflow: auto;
+}
+
+.signup-panel .panel-body{
+    overflow:auto;
+}
+
+.signup-label{
+    margin-left:60px;
+}
+
+.signup-input {
+    width:250px;
+    margin:0px auto;
+}
+
+.signup-submit{
+    position:relative;
+    top:10px;
+    width:100px;
+    left:50%;
+    margin-left:-50px;
+    
+}
+
+.signup-form-wrapper{
+    position:relative;
+    margin:0px auto;
+    margin-top:30px;
+}
+
+.group_username .alert, .group_password .alert, .group_confirm_password .alert{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.login-link{
+    position:relative;
+    width:190px;
+    left:50px;
+    top:-67px;
+}
+
+.community-select{
+    width:250px;
+    margin:0px auto;
+}
