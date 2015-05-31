@@ -15,7 +15,7 @@
         // first delete any WAITING games
         deleteGame($username);
         $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);   
-        $query = "INSERT INTO game VALUES (0, '{$username}', NULL, 'WAITING', '{$username}|NULL', DATE_ADD(NOW(), INTERVAL 1 HOUR));";
+        $query = "INSERT INTO game VALUES (0, '{$username}', NULL, 'WAITING', '{$username}|NULL', DATE_ADD(NOW(), INTERVAL 1 HOUR), NULL, NULL, NULL);";
         mysqli_query($dbc, $query);
         mysqli_close($dbc);
     }
@@ -129,14 +129,46 @@
      * @param $host_name:       host's username
      */ 
     function guestJoinGame($host_name, $guest_name){
-        $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-        $query = "UPDATE game SET 
-                    guest='{$guest_name}',
-                    game_name='{$host_name}|{$guest_name}',
-                    game_status='PLAYING'
-                    WHERE host='{$host_name}' AND game_status='WAITING';";
-        $result = mysqli_query($dbc, $query);
-        mysqli_close($dbc);
+       error_reporting(E_ALL);
+	 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+	$query = "SELECT user.*, game.*, community.capacity FROM community_has_user
+                    INNER JOIN community
+                        ON community.id=community_has_user.community_id
+                    INNER JOIN user
+                        ON community_has_user.username=user.username
+                    INNER JOIN game
+                        ON user.username=game.host
+                    WHERE game.host='{$host_name}' AND game.game_status='WAITING';";
+        $result = mysqli_fetch_array(mysqli_query($dbc, $query));
+	
+	$num = 1;
+	$guest_num = 'guest';
+	if($result['guest'] == null){
+		$guest_num = 'guest';
+	}else if($result['guest_2'] == null){
+		$guest_num = 'guest_2';
+		$num = 2;
+	}else if($result['guest_3'] == null){
+                $guest_num = 'guest_3';
+		$num = 3;
+	}else if($result['guest_4'] == null){
+                $guest_num = 'guest_4';
+		$num = 4;
+	}
+
+	//echo $guest_num.' fsa '.$result['guest'].' fdsfas ';*/
+
+	if($num <= (int)$result['capacity']){
+        	$query = "UPDATE game SET 
+                	    {$guest_num}='{$guest_name}',
+                	    game_name='{$host_name}|{$guest_name}',
+                	    game_status='PLAYING'
+                	    WHERE host='{$host_name}' AND game_status='WAITING';";
+        	$result = mysqli_query($dbc, $query);
+        	mysqli_close($dbc);
+	    	
+	
+	}
     }
 
     /*
@@ -235,7 +267,7 @@
             // get each item
             $grid_item_arr = array();
             for ($i = 0; $i < count($grid_item_id_arr); $i ++){
-                $grid_item_id_temp = $grid_item_id_arr[$i];
+                $grid_item_id_temp = $i;
                 $query = "SELECT * FROM grid_item WHERE grid_item_id={$grid_item_id_temp};";
                 $result = mysqli_query($dbc, $query);
                 while ($row = mysqli_fetch_array($result)){
@@ -277,21 +309,26 @@
                 $query = "UPDATE turn SET guest_grid_order='{$guest_grid_order}' WHERE host='{$host_name}' AND guest='{$guest_name}' AND game_status='PLAYING';";
             }
             mysqli_query($dbc, $query);
-            // echo grid
+        
+		$imgLoc = "http://sapir.psych.wisc.edu/wp-content/uploads/";
+
+	    // echo grid
+		$alt = 17;
             echo "<ul class='grid_list' data-gridid='$grid_id'>";
             for ($i = 0; $i < count($grid_item_arr); $i ++){
                 $grid_item_id_temp = $grid_item_id_arr[$i];
-                $grid_item_temp = $grid_item_arr[$i];
+                $grid_item_temp = isset($grid_item_arr[$i]) ? $grid_item_arr[$i] : $alt;
+		$alt++;
                 if ($i % 3 == 0){
                     echo "<li class='grid_row'>
                             <ul class='grid_row_list'>
-                                <li class='grid_item' data-itemid='{$grid_item_id_temp}'><h1>{$grid_item_temp}</h1></li>";
+                                <li class='grid_item' data-itemid='{$grid_item_temp}'><img src='".$imgLoc.$grid_item_id_temp."' alt='item ".$grid_item_id_temp."' /></li>";
                 }
                 if ($i % 3 == 1){
-                    echo "<li class='grid_item' data-itemid='{$grid_item_id_temp}'><h1>{$grid_item_temp}</h1></li>";
+                    echo "<li class='grid_item' data-itemid='{$grid_item_temp}'><img src='".$imgLoc.$grid_item_id_temp."' alt='item ".$grid_item_id_temp."' /></li>";
                 }
                 if ($i % 3 == 2){
-                    echo "<li class='grid_item' data-itemid='{$grid_item_id_temp}'><h1>{$grid_item_temp}</h1></li></ul></li>";
+                    echo "<li class='grid_item' data-itemid='{$grid_item_temp}'><img src='".$imgLoc.$grid_item_id_temp."' alt='item ".$grid_item_id_temp."' /></li></ul></li>";
                 }
             }
             echo "</ul>";

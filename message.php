@@ -101,9 +101,29 @@
                         </a>
                         <a class="btn btn-info psy-btn btn-next-turn" data-username=<?php echo getCurrentUser(); ?>>Start</a>
                         <!--div class="view-panel panel panel-info">
-                            <div class="panel-heading"></div>
-                            <div class="panel-body">
-                            </div>
+                            <div class="panel-heading">Messaging</div>
+                            	<div class="panel-body" style="padding:7px !important">
+					<div style="border-bottom:1px solid #ddd">
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/701.png" />
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/702.png" />
+				 		<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/704.png" />
+		            			<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/706.png" />
+                                 		<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/710.png" />
+                                 		<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/713.png" />
+                                 		<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/714.png" />
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/734.png" />
+                                 		<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/735.png" />
+                                 		<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/740.png" />
+                                 		<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/725.png" />
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/92.png" />
+                                		<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/71.png" />
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/322.png" />
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/426.png" />
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/471.png" />
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/463.png" />	
+						<img src="http://sapir.psych.wisc.edu/wp-content/uploads/emojis/emoji-extractor/images/160x160/278.png" />
+					</div>
+				</div>
                         </div-->
                     </div>
                     <div class="input-panel panel panel-info">

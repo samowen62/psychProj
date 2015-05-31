@@ -3,6 +3,7 @@
 
     require_once(ROOT . '/include/activity_functions.php');
 
+
     if (isset($_POST['action'])){
         if (isset($_POST['username']) && $_POST['action'] == "get_all_activities"){
             displayAllActivities($_POST['username']);
@@ -16,5 +17,8 @@
         if(isset($_POST['game_id']) && isset($_POST['username']) && $_POST['action'] == "get_pagination"){
             getPagination($_POST['game_id'], $_POST['username']);
         }
-    }
+   	if($_POST['action'] == "delete_user"){
+		return deleteUser($_POST['user'],$_POST['community']);
+	} 
+   }
 ?>

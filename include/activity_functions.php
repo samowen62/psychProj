@@ -167,4 +167,16 @@
               </script>";
         mysqli_close($dbc);
     }
+
+
+	//This function simply deletes a user
+	function deleteUser($user, $community_id){
+
+		$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+        	$query = "DELETE FROM community_has_user WHERE username = \"{$user}\" AND community_id = {$community_id}";
+        	$result = mysqli_query($dbc, $query);
+		mysqli_close($dbc);
+		return "done";
+	}
+
 ?>

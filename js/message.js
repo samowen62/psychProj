@@ -79,17 +79,18 @@ function guestSelectsItem(){
              }else{
                 finishGamePOST(url, host, guest);
              }
+		console.log(data_arr);
              if (data_arr[0] == 'matched'){
-                $('[data-itemid=\"' + data_arr[1] + '\"]').css('background-color', '#86C166');
-                $('[data-itemid=\"' + data_arr[2] + '\"]').css('background-color', '#86C166');
+                $('[data-itemid=\"' + data_arr[1] + '\"] img').css('background-color', '#86C166');
+                $('[data-itemid=\"' + data_arr[2] + '\"] img').css('background-color', '#86C166');
                 if (turn != 20){
                     $('#message-play-wrapper .message-play-guide h4').text('Your guess is correct. Please click start to start next turn.');
                 }else{
                     $('#message-play-wrapper .message-play-guide h4').text('Your guess is correct. Game over, please quit. Thank you.');
                 }
              }else{
-                $('[data-itemid=\"' + data_arr[1] + '\"]').css('background-color', '#86C166');
-                $('[data-itemid=\"' + data_arr[2] + '\"]').css('background-color', '#E87A90');
+                $('[data-itemid=\"' + data_arr[1] + '\"] img').css('background-color', '#86C166');
+                $('[data-itemid=\"' + data_arr[2] + '\"] img').css('background-color', '#E87A90');
                 if (turn != 20){
                     $('#message-play-wrapper .message-play-guide h4').text('Your guess is incorrect. Please click start to start next turn.');
                 }else{
@@ -141,6 +142,18 @@ function startBtnClick(){
 	clickY = new Array();
 	clickDrag = new Array();
 	document.getElementById("iframeId").contentWindow.gainNode.connect(document.getElementById("iframeId").contentWindow.audioCtx.destination);
+	$('#iframeId').contents().find('body').bind(
+        'mousedown', function () {
+                console.log('mouse down triggered');
+		iframeMouseState = 1;
+        });
+
+	$('#iframeId').contents().find('body').bind(
+        'mouseup', function () {
+                console.log('mouse up triggered');
+		iframeMouseState = 0;
+        });
+
 	hostRecordMsg(x_pos_zero, y_pos_zero, game_url, host, guest);
 	send_msg = toggle_state + '';
 }
@@ -149,6 +162,8 @@ document.onmousedown = mouseDown;
 document.onmouseup = mouseUp;
 
 var mouseState = 0;
+var iframeMouseState = 0;
+
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
@@ -160,6 +175,7 @@ function mouseDown(ev) {
 function mouseUp(ev) {
     mouseState = 0;
 }
+
 
 /*
  * This function records message host sends out
@@ -192,14 +208,18 @@ function hostRecordMsg(x_pos_zero, y_pos_zero, game_url, host, guest){
         	msg_time_out -= 50;
         	send_msg += msg;
 	}else{
-		//if(mouseState == 0)
-		//	document.getElementById("iframeId").contentWindow.gainNode.disconnect(document.getElementById("iframeId").contentWindow.audioCtx.destination);
-		//else
-		//	document.getElementById("iframeId").contentWindow.gainNode.connect(document.getElementById("iframeId").contentWindow.audioCtx.destination);
+		if(iframeMouseState == 0){
+			document.getElementById("iframeId").contentWindow.gainNode.disconnect(document.getElementById("iframeId").contentWindow.audioCtx.destination);
+			console.log('muting');
+		}else{
+			document.getElementById("iframeId").contentWindow.gainNode.connect(document.getElementById("iframeId").contentWindow.audioCtx.destination);
+			console.log('resuming');
+		}
+		//console.log(iframeMouseState);	
 
-		var freq = document.getElementById("iframeId").contentWindow.oscillator.frequency.value;
-		var vol = document.getElementById("iframeId").contentWindow.gainNode.gain.value;	
-		console.log(freq,vol);
+		var freq = iframeMouseState != 0 ? document.getElementById("iframeId").contentWindow.oscillator.frequency.value : 0;
+		var vol = iframeMouseState != 0 ? document.getElementById("iframeId").contentWindow.gainNode.gain.value : 0;	
+		//console.log(freq,vol);
 
 		$('#time-left').text('Time Left: ' + msg_time_out/1000 + ' sec');
 		msg_time_out -= 50;
@@ -312,16 +332,16 @@ function hostCheckResultPOST(host, guest, url){
              //console.log(data_arr);
              if (data_arr[0] == 'matched' || data_arr[0] == 'unmatched'){
                  if (data_arr[0] == 'matched'){
-                    $('[data-itemid=\"' + data_arr[1] + '\"]').css('background-color', '#86C166');
-                    $('[data-itemid=\"' + data_arr[2] + '\"]').css('background-color', '#86C166');
+                    $('[data-itemid=\"' + data_arr[1] + '\"] img').css('background-color', '#86C166');
+                    $('[data-itemid=\"' + data_arr[2] + '\"] img').css('background-color', '#86C166');
                     if (turn != 20){
                         $('#message-play-wrapper .message-play-guide h4').text(guest + "'s guess was correct, please wait for him to start to start the next turn.");
                     }else{
                         $('#message-play-wrapper .message-play-guide h4').text(guest + "'s guess was correct. Game over, please quit. Thank you.");
                     }
                  }else{
-                    $('[data-itemid=\"' + data_arr[1] + '\"]').css('background-color', '#86C166');
-                    $('[data-itemid=\"' + data_arr[2] + '\"]').css('background-color', '#E87A90');
+                    $('[data-itemid=\"' + data_arr[1] + '\"] img').css('background-color', '#86C166');
+                    $('[data-itemid=\"' + data_arr[2] + '\"] img').css('background-color', '#E87A90');
                     if (turn != 20){
                         $('#message-play-wrapper .message-play-guide h4').text(guest + "'s guess was incorrect, please wait for him to start to start the next turn.");
                     }else{
@@ -441,7 +461,6 @@ function guestStartsNewTurn(host, guest){
             $("#message-play-wrapper .message-play-guide").attr("data-guestname", guest);
             $("#message-play-wrapper .message-play-guide").attr("data-hostname", host);
             $('#message-play-wrapper .message-play-guide h4').text("Please wait for " + host + " to select an item and send you a message.");
-            $(".view-panel .panel-heading").text("Msg received");
             guestRecMessagePOST(game_api_url, host, guest);
         }else{
             setTimeout(guestStartsNewTurn, 1000, host, guest);   
@@ -476,7 +495,6 @@ function hostRetrieveGridPOST(url, host, guest){
             setTimeout(hostRetrieveGridPOST, 1000, url, host, guest);    
          }else{
             $('.grid-panel .panel-body').html(data);
-            $(".view-panel .panel-heading").text("Msg Sent");
          }
 
     }).fail(function( jqXHR, textStatus ){
@@ -514,7 +532,6 @@ function startGamePOST(url, host, guest){
         getCurrentTurnPOST(url, host, guest);
         $("#message-play-wrapper .message-play-guide").attr("data-guestname", guest);
         $("#message-play-wrapper .message-play-guide").attr("data-hostname", host);
-        $(".view-panel .panel-heading").text("Msg received");
         guestRecMessagePOST(url, host, guest);
     }).fail(function( jqXHR, textStatus ){
         alert( "Request failed: " + textStatus );
@@ -721,7 +738,10 @@ function finishGamePOST(url, host, guest){
 }
 
 $(document).ready(function ($) {
-   
+	$('#iframeId').contents().find('body').bind(
+        'mousedown', function () {
+                console.log('mouse down triggered');
+        });
     /*var no_touch_flag = 0;
     var defaultEvent = "";
     
@@ -1221,7 +1241,7 @@ $(document).ready(function ($) {
         guestJoinGamePOST(game_api_url, host, guest);
         $("#message-play-wrapper .message-play-guide h3").text("You joined " + host + "'s game.");
         $("#message-play-wrapper .message-play-guide h4").text("Please make your guess after " + host + " selects an item and sends you message. ");
-        $(".view-panel .panel-heading").text("View received mesages");
+        //$(".view-panel .panel-heading").text("View received mesages");
     }
     
     /*

@@ -283,7 +283,9 @@
     height:140px;
     overflow: auto;
 }
-
+.view-panel .panel-body img{
+	width:17px;
+}
 .input-panel{
     width:450px;
     height:450px;
@@ -322,6 +324,11 @@
     padding:0px;
     margin:0px;
     text-align: center;
+}
+.grid-panel .panel-body .grid_list .grid_row .grid_row_list .grid_item img{
+        max-width:139px;
+	max-height:125px;
+        overflow:hide;
 }
 
 .grid-panel .panel-body .grid_list .grid_row .grid_row_list .grid_item h1{
