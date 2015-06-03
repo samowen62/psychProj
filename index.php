@@ -4,7 +4,7 @@
     require_once(ROOT . '/include/login_functions.php');
 
     if (user_isLogged()){
-        require(ROOT . '/dashboard.php');
+        require(ROOT . '/message.php');
     }else{
         require(ROOT . '/login.php');
     }

@@ -48,8 +48,8 @@
                 <nav id="p_header" class="global-navbar navbar navbar-default" role="navigation">
                     <div class="icon-reorder menu-icon-area" data-effect="st-effect" id="menu-btn"></div>
                     <div class="nav-option-area">
-                        <div class="nav-option icon-search"></div>
-                        <div class="nav-option icon-calendar"></div>
+                        <a href="http://sapir.psych.wisc.edu/~yan/Psycho-Project/editCommunity.php"><div class="nav-option icon-search"></div></a>
+                        <a href="http://sapir.psych.wisc.edu/~yan/Psycho-Project/editGrid.php"><div class="nav-option icon-calendar"></div></a>
                         <form id="logout-form" method="post" action="api/logout_api.php">
                             <button type="submit" class="nav-option icon-exit"></button>
                         </form>

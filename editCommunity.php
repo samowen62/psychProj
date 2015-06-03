@@ -24,12 +24,33 @@
 		$imgLoc = "http://sapir.psych.wisc.edu/wp-content/uploads/";
 
             if (user_isLogged()){
-                // header("Location: http://sapir.psych.wisc.edu/Psycho-Project/dashboard.php");
+		$user = currentUser();
+		if(strcmp($user['admin'],"1") != 0)
+                         header("Location: http://sapir.psych.wisc.edu/~yan/Psycho-Project/dashboard.php");
             }else{
                 header("Location: http://sapir.psych.wisc.edu/~yan/Psycho-Project/login.php");
             }
 
 
+		if(isset($_POST["user_sub"])) {
+			if(isset($_POST['user_number'])){
+				$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+				$start = "SELECT id from user order by id desc limit 1";
+				$res = mysqli_query($dbc, $start);
+				$first = mysqli_fetch_array($res);
+				$first = $first[0];
+
+				$num = intval($_POST['user_number']);
+				for($i = 0; $i < $num; $i++)
+				{
+					$dbc->query("INSERT INTO user (username, password, admin) VALUES ('User".($first + $i + 2)."', '".rand()."',0)");
+
+				}	
+
+				mysqli_close($dbc);
+			}
+		}
+		
 		if(isset($_POST["submit"])) {
 			//if(isset($_POST["username"]) && isset($_POST['community_id'])){
 
@@ -37,7 +58,11 @@
 			//}else{
 				if(isset($_POST["community"])){
 					$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-					$update = "UPDATE community SET capacity = {$_POST['Cap'.$_POST["community"]]} WHERE name = '{$_POST["community"]}'";
+					$update = "UPDATE community SET capacity = {$_POST['Cap'.$_POST["community"]]},
+							rounds = {$_POST['Rounds'.$_POST["community"]]},
+							game_type = '{$_POST['Game'.$_POST["community"]]}'
+							WHERE name = '{$_POST["community"]}'";
+						//var_dump($update);exit;
 					$dbc->query($update);
 					mysqli_close($dbc);
 				}
@@ -48,6 +73,7 @@
 					$num = mysqli_query($dbc,$check);
 					$count = mysqli_fetch_array($num);
 					if(intval($count[0]) == 0){
+						$dbc->query("DELETE FROM community_has_user WHERE username='{$_POST['user']}'");
 						$insert = "INSERT INTO community_has_user VALUES ('{$_POST["user"]}', '{$_POST["comm_id"]}')";
                         	                $dbc->query($insert);
 					}                                
@@ -57,7 +83,8 @@
 		}
 
 		$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-                $query = "SELECT community.name, community.capacity, community_has_user.username, community.id FROM community 
+                $query = "SELECT community.name, community.capacity, community_has_user.username, community.id, community.rounds, community.game_type
+				 FROM community 
                                 LEFT OUTER JOIN community_has_user ON community.id = community_has_user.community_id";
                 $res = mysqli_query($dbc, $query);
 
@@ -102,16 +129,27 @@
                                 </div>
 				<form action="editCommunity.php" accept-charset="utf-8" method="post" enctype="multipart/form-data">
                                 	<div class="panel panel-info activity-detail">
-						<div class="panel-heading">Edit the Communities Below</div>
+						<div class="panel-heading">Edit the Communities Below. A user may only belong to one community.</div>
                                 		<?php 
-							//print_r($communities);
+							//print_r($communities);exit;
 							$name = '';
 							$i = 1;
 							echo "<div>";
 
 							foreach($communities as $k => $v){
 								if($name != $v[0]){
-									echo "</div><div class='comm' id='row{$i}'><span class='title' onclick='changeComm(\"{$v[0]}\",{$i},{$v[3]})'>{$v[0]}</span><span class='cap'>Capacity:<input name='Cap{$v[0]}' value='{$v[1]}' type='text'/></span>";	
+									echo "</div><div class='comm' id='row{$i}'><span class='title' onclick='changeComm(\"{$v[0]}\",{$i},{$v[3]})'>{$v[0]}</span>
+										<span class='cap'>
+										Capacity:<input name='Cap{$v[0]}' value='{$v[1]}' type='text'/>
+										</span>
+										<span class='cap'>
+                                                                                Rounds:<input name='Rounds{$v[0]}' value='{$v[4]}' type='text'/>
+                                                                                </span>
+										<span class='cap' style='width:40%'>
+                                                                                Game Type:<input name='Game{$v[0]}' style='width:100px' value='{$v[5]}' type='text'/>
+                                                                                </span>
+
+	";	
 									$name = $v[0];
 									$i++;
 								}
@@ -154,7 +192,13 @@
                                         <h5>LATEST ACTIVITIES</h5>
                                     </header>
                                     <ul class="activity-list">
-                                    </ul>
+					<li style="margin-left:20px; padding:20px" >Generate how many users? 
+					   <form action="editCommunity.php" accept-charset="utf-8" method="post" enctype="multipart/form-data">
+                                   		<input name="user_number" type="text" style="" />
+						<input type="submit" name="user_sub" value="Submit" />
+					   </form>
+					</li> 
+				   </ul>
                                 </div>
                             </section>
                         </div>

@@ -23,11 +23,13 @@
 
 		$imgLoc = "http://sapir.psych.wisc.edu/wp-content/uploads/";
 
-            if (user_isLogged()){
-                // header("Location: http://sapir.psych.wisc.edu/Psycho-Project/dashboard.php");
-            }else{
+        if (user_isLogged()){
+            	$user = currentUser();                                                  
+                if(strcmp($user['admin'],"1") != 0)
+                         header("Location: http://sapir.psych.wisc.edu/~yan/Psycho-Project/dashboard.php");
+	}else{
                 header("Location: http://sapir.psych.wisc.edu/~yan/Psycho-Project/login.php");
-            }
+        }
 
 		//$target_dir = ROOT."/uploads/";
 		$target_dir = "/var/www/wp-content/uploads/";

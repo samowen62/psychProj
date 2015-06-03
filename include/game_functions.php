@@ -141,33 +141,42 @@
                     WHERE game.host='{$host_name}' AND game.game_status='WAITING';";
         $result = mysqli_fetch_array(mysqli_query($dbc, $query));
 	
-	$num = 1;
+	$num = 2;
 	$guest_num = 'guest';
 	if($result['guest'] == null){
 		$guest_num = 'guest';
 	}else if($result['guest_2'] == null){
 		$guest_num = 'guest_2';
-		$num = 2;
+		$num = 3;
 	}else if($result['guest_3'] == null){
                 $guest_num = 'guest_3';
-		$num = 3;
+		$num = 4;
 	}else if($result['guest_4'] == null){
                 $guest_num = 'guest_4';
-		$num = 4;
+		$num = 5;
 	}
 
-	//echo $guest_num.' fsa '.$result['guest'].' fdsfas ';*/
 
-	if($num <= (int)$result['capacity']){
+	if($num < (int)$result['capacity']){
         	$query = "UPDATE game SET 
                 	    {$guest_num}='{$guest_name}',
                 	    game_name='{$host_name}|{$guest_name}',
-                	    game_status='PLAYING'
+                	    game_status='WAITING'
                 	    WHERE host='{$host_name}' AND game_status='WAITING';";
         	$result = mysqli_query($dbc, $query);
         	mysqli_close($dbc);
 	    	
 	
+	}else if($num == (int)$result['capacity']){
+		$query = "UPDATE game SET 
+                            {$guest_num}='{$guest_name}',
+                            game_name='{$host_name}|{$guest_name}',
+                            game_status='PLAYING'
+                            WHERE host='{$host_name}' AND game_status='WAITING';";
+                $result = mysqli_query($dbc, $query);
+                mysqli_close($dbc);
+
+
 	}
     }
 

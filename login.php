@@ -23,11 +23,11 @@
                                     <form method="post" action="api/login_api.php">
                                         <div class="form-group">
                                             <label class="login-label" for="username">Username</label>
-                                            <input type="username" name="username" class="login-input form-control" id="username" placeholder="Enter Username">
+                                            <input type="username" name="username" class="login-input form-control" value="<?php echo $_GET['username']; ?>" id="username" placeholder="Enter Username">
                                         </div>
                                         <div class="form-group">
                                             <label class="login-label" for="password">Password</label>
-                                            <input type="password" name="password" class="login-input form-control" id="password" placeholder="Enter Password">
+                                            <input type="password" name="password" class="login-input form-control" value="<?php echo $_GET['password']; ?>" id="password" placeholder="Enter Password">
                                         </div>
                                         <br/>
                                         <button type="submit" class="login-submit btn btn-default">Login</button>

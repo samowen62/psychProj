@@ -51,6 +51,12 @@ a:hover{
 .icon-trash:before {
 	content: "\e605";
 }
+.icon-male:before {
+        content: "\f004";
+}
+.icon-th:before {
+        content: "\e00a";
+}
 .icon-home:before {
 	content: "\e606";
 }

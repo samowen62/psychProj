@@ -21,6 +21,8 @@
 
             if (user_isLogged()){
                 // header("Location: http://sapir.psych.wisc.edu/Psycho-Project/dashboard.php");
+		//if(!currentUser()['admin'])
+		//	 header("Location: http://sapir.psych.wisc.edu/~yan/Psycho-Project/dashboard.php");
             }else{
                 header("Location: http://sapir.psych.wisc.edu/~yan/Psycho-Project/login.php");
             }

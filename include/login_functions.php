@@ -26,6 +26,20 @@
             return false;
         }
     }
+
+
+	function currentUser(){
+		if(!user_isLogged())
+			return null;
+		
+		$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+            	$username = $_COOKIE['psy_username'];
+            	$query = "SELECT * FROM user WHERE username='{$username}';";
+            	$result = mysqli_fetch_array(mysqli_query($dbc, $query));
+            	mysqli_close($dbc);
+
+		return $result;
+	}
         
     /*
      * This function tries to login a user, if success, redirect to index.php
